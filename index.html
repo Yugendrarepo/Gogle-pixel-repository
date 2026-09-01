@@ -99,6 +99,10 @@
         input[type="submit"]:active {
             transform: scale(0.98);
         }
+        
+        br {
+            display: none; /* Keeps structural card alignment clean */
+        }
     </style>
 </head>
 <body>
@@ -108,23 +112,23 @@
         <p>Please register your Google Pixel device information below.</p>
         
         <form action="https://salesforce.com" method="POST">
-            
-            <!-- Salesforce Tracking Identifiers -->
+
+            <!-- Salesforce Account & Redirect Identifiers -->
             <input type="hidden" name="oid" value="00Dg700000D0a4t">
             <input type="hidden" name="retURL" value="https://github.io">
-            
-            <!-- Injected Production Fix: Sets Lead Source to Web automatically -->
-            <input type="hidden" name="lead_source" value="Web">
 
-            <!-- Form Contact Input Fields -->
+            <!-- Form Standard Contact Inputs -->
             <label for="first_name">First Name</label>
             <input id="first_name" maxlength="40" name="first_name" type="text" placeholder="John" required />
 
             <label for="last_name">Last Name</label>
             <input id="last_name" maxlength="80" name="last_name" type="text" placeholder="Doe" required />
 
-            <label for="email">Email Address</label>
+            <label for="email">Email</label>
             <input id="email" maxlength="80" name="email" type="text" placeholder="name@example.com" required />
+
+            <label for="phone">Phone</label>
+            <input id="phone" maxlength="40" name="phone" type="text" placeholder="(555) 555-5555" />
 
             <label for="company">Company</label>
             <input id="company" maxlength="40" name="company" type="text" placeholder="Organization name" />
@@ -132,7 +136,7 @@
             <label for="city">City</label>
             <input id="city" maxlength="40" name="city" type="text" placeholder="e.g. New York" />
 
-            <!-- CORRECTED: Using country_code parameter with valid Salesforce ISO values -->
+            <!-- Core Country Target Dropdown Menu -->
             <label for="country_code">Country</label>
             <select id="country_code" name="country_code" required>
                 <option value="">--Select Country--</option>
@@ -145,6 +149,23 @@
                 <option value="FR">France (FR)</option>
                 <option value="JP">Japan (JP)</option>
             </select>
+
+            <!-- Regional State Dropdown Menu -->
+            <label for="state_code">State/Province</label>
+            <select id="state_code" name="state_code">
+                <option value="">--None--</option>
+                <option value="AL">Alabama (AL)</option>
+                <option value="AK">Alaska (AK)</option>
+                <option value="AZ">Arizona (AZ)</option>
+                <option value="CA">California (CA)</option>
+                <option value="FL">Florida (FL)</option>
+                <option value="NY">New York (NY)</option>
+                <option value="TX">Texas (TX)</option>
+                <option value="WA">Washington (WA)</option>
+            </select>
+
+            <!-- Hidden Tracker Node: Populates Lead Source as Web to kick off Flow -->
+            <input type="hidden" id="lead_source" name="lead_source" value="Web" />
 
             <input type="submit" name="submit" value="Complete Registration">
         </form>
