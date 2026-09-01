@@ -113,7 +113,7 @@
             <input type="hidden" name="oid" value="00Dg700000D0a4t">
             <input type="hidden" name="retURL" value="https://github.io">
             
-            <!-- Injected Production Fix: Enforces Lead Source Population -->
+            <!-- Injected Production Fix: Sets Lead Source to Web automatically -->
             <input type="hidden" name="lead_source" value="Web">
 
             <!-- Form Contact Input Fields -->
@@ -132,18 +132,18 @@
             <label for="city">City</label>
             <input id="city" maxlength="40" name="city" type="text" placeholder="e.g. New York" />
 
-            <!-- Standardized Country Selection Dropdown List -->
-            <label for="country">Country</label>
-            <select id="country" name="country" required>
+            <!-- CORRECTED: Using country_code parameter with valid Salesforce ISO values -->
+            <label for="country_code">Country</label>
+            <select id="country_code" name="country_code" required>
                 <option value="">--Select Country--</option>
-                <option value="United States">United States (US)</option>
-                <option value="India">India (IN)</option>
-                <option value="United Kingdom">United Kingdom (GB)</option>
-                <option value="Canada">Canada (CA)</option>
-                <option value="Australia">Australia (AU)</option>
-                <option value="Germany">Germany (DE)</option>
-                <option value="France">France (FR)</option>
-                <option value="Japan">Japan (JP)</option>
+                <option value="US">United States (US)</option>
+                <option value="IN">India (IN)</option>
+                <option value="GB">United Kingdom (GB)</option>
+                <option value="CA">Canada (CA)</option>
+                <option value="AU">Australia (AU)</option>
+                <option value="DE">Germany (DE)</option>
+                <option value="FR">France (FR)</option>
+                <option value="JP">Japan (JP)</option>
             </select>
 
             <input type="submit" name="submit" value="Complete Registration">
