@@ -58,17 +58,20 @@
             margin-bottom: 6px;
             color: var(--google-gray);
         }
-        input[type="text"], select {
+        input[type="text"], input[type="email"], select {
             width: 100%;
             padding: 12px;
             font-size: 15px;
             border: 1px solid var(--border-color);
             border-radius: 4px;
             background-color: #fff;
+            color: var(--text-dark);
             box-sizing: border-box;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
-        input[type="text"]:focus, select:focus {
+        input[type="text"]:focus, input[type="email"]:focus, select:focus {
             border-color: var(--google-blue);
+            box-shadow: 0 0 0 2px rgba(26,115,232,0.2);
             outline: none;
         }
         .submit-btn {
@@ -81,9 +84,17 @@
             font-weight: 500;
             border-radius: 4px;
             cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 10px;
         }
         .submit-btn:hover {
             background-color: #1557b0;
+        }
+        .footer-text {
+            font-size: 12px;
+            color: var(--google-gray);
+            text-align: center;
+            margin-top: 24px;
         }
     </style>
 </head>
@@ -97,12 +108,12 @@
 
     <form action="https://salesforce.com" method="POST" id="leadForm">
 
-        <!-- Hidden System Credentials -->
+        <!-- Hidden System Requirements (Securely Linked) -->
         <input type="hidden" name="oid" value="00Dg700000D0a4t">
         <input type="hidden" name="retURL" value="https://google.com">
         <input type="hidden" name="lead_source" value="Web">
         
-        <!-- Hidden Custom Region Field -->
+        <!-- Hidden Territory Assignment Parameter -->
         <input type="hidden" id="custom_region_field" name="Region__c" value="Other_region">
 
         <div class="form-group">
@@ -117,66 +128,54 @@
 
         <div class="form-group">
             <label for="email">Email Address</label>
-            <input id="email" maxlength="80" name="email" type="text" placeholder="name@company.com" required />
+            <input id="email" maxlength="80" name="email" type="email" placeholder="name@company.com" required />
         </div>
 
         <div class="form-group">
             <label for="company">Company</label>
-            <input id="company" maxlength="40" name="company" type="text" placeholder="Google Inc." required />
+            <input id="company" maxlength="40" name="company" type="text" placeholder="Mallow Tech" required />
         </div>
 
         <div class="form-group">
             <label for="city">City</label>
-            <input id="city" maxlength="40" name="city" type="text" placeholder="Mountain View" required />
+            <input id="city" maxlength="40" name="city" type="text" placeholder="Karur" required />
         </div>
 
         <div class="form-group">
-            <label for="country_code">Country</label>
-            <select id="country_code" name="country_code" required>
+            <label for="country">Country</label>
+            <select id="country" name="country" required>
                 <option value="">Select country...</option>
                 <option value="US">United States</option>
                 <option value="CA">Canada</option>
                 <option value="MX">Mexico</option>
-                <option value="AF">Afghanistan</option>
-                <option value="AU">Australia</option>
-                <option value="CN">China</option>
                 <option value="IN">India</option>
                 <option value="JP">Japan</option>
-                <option value="SG">Singapore</option>
-                <option value="AX">Aland Islands</option>
-                <option value="AL">Albania</option>
-                <option value="DZ">Algeria</option>
-                <option value="AD">Andorra</option>
-                <option value="AO">Angola</option>
                 <option value="FR">France</option>
-                <option value="DE">Germany</option>
                 <option value="GB">United Kingdom</option>
-                <option value="AI">Anguilla</option>
-                <option value="AR">Argentina</option>
                 <option value="BR">Brazil</option>
             </select>
         </div>
 
         <button type="submit" class="submit-btn">Submit Registration</button>
     </form>
+
+    <div class="footer-text">
+        Secure transmission link authorized by Salesforce Web-to-Lead Endpoint APIs.
+    </div>
 </div>
 
 <script>
-    // Updated Script: Maps the 2-Letter ISO codes directly to your Region Name variables
+    // System Territory Mapping Engine
     document.getElementById('leadForm').addEventListener('submit', function() {
-        const countrySelect = document.getElementById('country_code');
+        const countrySelect = document.getElementById('country');
         const selectedISO = countrySelect.value;
         const regionHiddenInput = document.getElementById('custom_region_field');
 
         const codeMapping = {
-            // North America
             'US': 'North_America', 'CA': 'North_America', 'MX': 'North_America',
-            // APAC
-            'AF': 'APAC', 'AU': 'APAC', 'CN': 'APAC', 'IN': 'APAC', 'JP': 'APAC', 'SG': 'APAC',
-            // EMEA
-            'AX': 'EMEA', 'AL': 'EMEA', 'DZ': 'EMEA', 'AD': 'EMEA', 'AO': 'EMEA', 'FR': 'EMEA', 'DE': 'EMEA', 'GB': 'EMEA',
-            // LATAM
-            'AI': 'LATAM', 'AR': 'LATAM', 'BR': 'LATAM'
+            'IN': 'APAC', 'JP': 'APAC',
+            'FR': 'EMEA', 'GB': 'EMEA',
+            'BR': 'LATAM'
         };
 
         if (codeMapping[selectedISO]) {
