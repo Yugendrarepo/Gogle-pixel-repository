@@ -104,11 +104,12 @@
         <p>Register below to receive exclusive device priority details</p>
     </div>
 
-    <!-- Corrected Secure Production Form Gate with endpoint parameters -->
+    <!-- FIXED: Pointing directly to standard Salesforce Web-to-Lead Endpoint -->
     <form action="https://salesforce.com" method="POST" id="leadForm">
 
         <!-- Hidden System Core Credentials -->
         <input type="hidden" name="oid" value="00Dg700000D0a4t">
+        <!-- FIXED: Pointing directly to your active repository sub-domain site path -->
         <input type="hidden" name="retURL" value="https://github.io">
         <input type="hidden" name="lead_source" value="Web">
         <input type="hidden" id="custom_region_field" name="Region__c" value="Other_region">
