@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Interest | The New Google Phone</title>
+    <title>Google Phone Hardware Launch Registration</title>
     <style>
         :root {
             --google-blue: #1a73e8;
@@ -58,7 +58,7 @@
             margin-bottom: 6px;
             color: var(--google-gray);
         }
-        input[type="text"], input[type="email"], select {
+        input[type="text"], select {
             width: 100%;
             padding: 12px;
             font-size: 15px;
@@ -67,11 +67,10 @@
             background-color: #fff;
             color: var(--text-dark);
             box-sizing: border-box;
-            transition: border-color 0.2s, box-shadow 0.2s;
+            transition: border-color 0.2s;
         }
-        input[type="text"]:focus, input[type="email"]:focus, select:focus {
+        input[type="text"]:focus, select:focus {
             border-color: var(--google-blue);
-            box-shadow: 0 0 0 2px rgba(26,115,232,0.2);
             outline: none;
         }
         .submit-btn {
@@ -85,7 +84,6 @@
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.2s;
-            margin-top: 10px;
         }
         .submit-btn:hover {
             background-color: #1557b0;
@@ -106,14 +104,13 @@
         <p>Register below to receive exclusive device priority details</p>
     </div>
 
+    <!-- Secure Web-to-Lead Form Ingestion Core -->
     <form action="https://salesforce.com" method="POST" id="leadForm">
 
-        <!-- Hidden System Requirements (Securely Linked) -->
+        <!-- Hidden Global Tracking and Redirect Security Credentials -->
         <input type="hidden" name="oid" value="00Dg700000D0a4t">
         <input type="hidden" name="retURL" value="https://google.com">
         <input type="hidden" name="lead_source" value="Web">
-        
-        <!-- Hidden Territory Assignment Parameter -->
         <input type="hidden" id="custom_region_field" name="Region__c" value="Other_region">
 
         <div class="form-group">
@@ -128,7 +125,7 @@
 
         <div class="form-group">
             <label for="email">Email Address</label>
-            <input id="email" maxlength="80" name="email" type="email" placeholder="name@company.com" required />
+            <input id="email" maxlength="80" name="email" type="text" placeholder="name@company.com" required />
         </div>
 
         <div class="form-group">
@@ -160,12 +157,13 @@
     </form>
 
     <div class="footer-text">
-        Secure transmission link authorized by Salesforce Web-to-Lead Endpoint APIs.
+        Secure encryption active. Linked with Salesforce Web APIs.
     </div>
 </div>
 
 <script>
-    // System Territory Mapping Engine
+    // Frontend Extraction Logic
+    // Captures the ISO code parameter and maps it directly to your Flow naming strings
     document.getElementById('leadForm').addEventListener('submit', function() {
         const countrySelect = document.getElementById('country');
         const selectedISO = countrySelect.value;
